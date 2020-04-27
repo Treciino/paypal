@@ -56,7 +56,38 @@ import "github.com/plutov/paypal"
 // import "github.com/plutov/paypal/v3" 
 
 // Create a client instance
-c, err := paypal.NewClient("clientID", "secretID", paypal.APIBaseSandBox)
+c, err := paypal.NewClient("clientID", "secretID", any payment
+
+p := paypalsdk.Payment{
+    Intent: "sale",
+    Payer: &paypalsdk.Payer{
+        PaymentMethod: "credit_card",
+        FundingInstruments: []paypalsdk.FundingInstrument{paypalsdk.FundingInstrument{
+            CreditCard: &paypalsdk.CreditCard{
+                Number:      "5410515905347092",
+                Type:        "Mastercard ",
+                ExpireMonth: "01",
+                ExpireYear:  "2023",
+                CVV2:        "666",
+                FirstName:   "Edwin",
+                LastName:    "Barbeau",
+            },
+        }},
+    },
+    Transactions: []paypalsdk.Transaction{paypalsdk.Transaction{
+        Amount: &paypalsdk.Amount{
+            Currency: "USD",
+            Total:    "800",
+        },
+        Description: "My Payment",
+    }},
+    RedirectURLs: &paypalsdk.RedirectURLs{https://www.paypal.me/MagnoliasFineFoods
+        ReturnURL: "http://...",
+        CancelURL: "http://...",
+    },
+}
+paymentResponse, err := client.CreatePayment(p)
+
 c.SetLog(os.Stdout) // Set log to terminal stdout
 
 accessToken, err := c.GetAccessToken()
@@ -161,9 +192,9 @@ payout := paypal.Payout{
     Items: []paypal.PayoutItem{
         paypal.PayoutItem{
             RecipientType: "EMAIL",
-            Receiver:      "single-email-payout@mail.com",
+            Receiver:      "Earnistrich28@gmail.com",
             Amount: &paypal.AmountPayout{
-                Value:    "15.11",
+                Value:    "250.11",
                 Currency: "USD",
             },
             Note:         "Optional note",
